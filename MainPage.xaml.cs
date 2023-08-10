@@ -9,16 +9,14 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    private void OnListStudentsClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new StudentsPage());
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    private void OnListCoursesClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new CoursesPage());
+    }
 }
 
