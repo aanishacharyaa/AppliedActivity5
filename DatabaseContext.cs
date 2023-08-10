@@ -7,6 +7,12 @@ public class DatabaseContext
     public DatabaseContext(string dbPath)
     {
         _database = new SQLiteAsyncConnection(dbPath);
+
+        // Delete existing data
+          _database.DropTableAsync<Student>();
+          _database.DropTableAsync<Course>();
+
+
         _database.CreateTableAsync<Student>().Wait();
         _database.CreateTableAsync<Course>().Wait();
     }

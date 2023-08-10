@@ -4,10 +4,22 @@
              x:Class="AppliedActivity5.CoursesPage"
              Title="CoursesPage">
     <StackLayout>
-        <ListView x:Name="CoursesListView">
+        <Button Text="Add Course" Clicked="AddCourseButton_Clicked" />
+        <Picker x:Name="AvailableCoursesPicker"
+                Title="Select a Course"
+                ItemDisplayBinding="{Binding Title}"
+                ItemsSource="{Binding AvailableCourses}" />
+        <ListView x:Name="CoursesListView" ItemsSource="{Binding Courses}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Title}" Detail="{Binding Instructor}" />
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Title}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+                            <Button Text="Delete" Clicked="HandleDeleteButtonClicked" CommandParameter="{Binding .}" />
+
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
